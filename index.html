@@ -79,6 +79,7 @@
       background:rgba(255,255,255,.05);
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
       white-space:nowrap;
+      cursor:pointer;
     }
     .btn:hover{ transform: translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18); }
     .btn.primary{
@@ -192,10 +193,24 @@
     }
     .section p{margin:0 0 14px; color:var(--muted);}
 
+    /* NEW: alternating section backgrounds */
+    .section-alt{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+    @media (max-width: 640px){
+      .section-alt{padding-left: 12px; padding-right: 12px;}
+    }
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap:14px;
+      align-items:stretch; /* NEW */
     }
     .card{
       grid-column: span 4;
@@ -208,9 +223,40 @@
       flex-direction:column;
       gap:10px;
       min-height: 210px;
+      border-left: 3px solid rgba(255,255,255,0.08); /* NEW */
     }
     @media (max-width: 980px){ .card{grid-column: span 6;} }
     @media (max-width: 640px){ .card{grid-column: span 12;} }
+
+    /* NEW: subtle color-tinted cards by category */
+    .card.banking{
+      background: linear-gradient(135deg, rgba(110,231,255,0.10), rgba(15,26,51,0.85));
+      border-left-color: rgba(110,231,255,0.6);
+    }
+    .card.mobile{
+      background: linear-gradient(135deg, rgba(155,140,255,0.10), rgba(15,26,51,0.85));
+      border-left-color: rgba(155,140,255,0.6);
+    }
+    .card.insurance{
+      background: linear-gradient(135deg, rgba(52,211,153,0.10), rgba(15,26,51,0.85));
+      border-left-color: rgba(52,211,153,0.6);
+    }
+    .card.paperwork{
+      background: linear-gradient(135deg, rgba(251,191,36,0.10), rgba(15,26,51,0.85));
+      border-left-color: rgba(251,191,36,0.6);
+    }
+    .card.call{
+      background: linear-gradient(135deg, rgba(110,231,255,0.08), rgba(155,140,255,0.07), rgba(15,26,51,0.85));
+      border-left-color: rgba(110,231,255,0.55);
+    }
+    .card.city{
+      background: linear-gradient(135deg, rgba(155,140,255,0.08), rgba(15,26,51,0.85));
+      border-left-color: rgba(155,140,255,0.55);
+    }
+    .card.info{
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(15,26,51,0.85));
+      border-left-color: rgba(255,255,255,0.18);
+    }
 
     .card .head{display:flex; align-items:center; justify-content:space-between; gap:10px;}
     .tag{
@@ -396,7 +442,8 @@
         <div class="mini">No spam. Unsubscribe anytime. (This form is a demo — connect it to your email tool.)</div>
       </section>
 
-      <section class="section" id="recommended" aria-label="Recommended services">
+      <!-- NEW: section-alt gives subtle contrasting background -->
+      <section class="section section-alt" id="recommended" aria-label="Recommended services">
         <h2>Recommended essentials</h2>
         <p>
           Start with these basics. Swap the placeholders with your real affiliate links when you’re ready.
@@ -404,7 +451,7 @@
 
         <div class="grid">
           <!-- Banking -->
-          <article class="card" aria-label="Banking card">
+          <article class="card banking" aria-label="Banking card">
             <div class="head">
               <h3>Banking</h3>
               <span class="tag">High intent</span>
@@ -442,7 +489,7 @@
           </article>
 
           <!-- SIM/eSIM -->
-          <article class="card" aria-label="SIM and eSIM card">
+          <article class="card mobile" aria-label="SIM and eSIM card">
             <div class="head">
               <h3>SIM / eSIM</h3>
               <span class="tag">Fast win</span>
@@ -480,7 +527,7 @@
           </article>
 
           <!-- Insurance -->
-          <article class="card" aria-label="Insurance card">
+          <article class="card insurance" aria-label="Insurance card">
             <div class="head">
               <h3>Insurance</h3>
               <span class="tag">Visa-friendly</span>
@@ -518,7 +565,7 @@
           </article>
 
           <!-- Paperwork -->
-          <article class="card" aria-label="Paperwork help card">
+          <article class="card paperwork" aria-label="Paperwork help card">
             <div class="head">
               <h3>Paperwork help</h3>
               <span class="tag">Time-saver</span>
@@ -556,7 +603,7 @@
           </article>
 
           <!-- Optional: Paid call -->
-          <article class="card" aria-label="Starter call card" style="grid-column: span 6;">
+          <article class="card call" aria-label="Starter call card" style="grid-column: span 6;">
             <div class="head">
               <h3>Need help choosing? (Optional)</h3>
               <span class="tag">30 min</span>
@@ -574,7 +621,7 @@
           </article>
 
           <!-- Optional: City guide -->
-          <article class="card" aria-label="City quickstart card" style="grid-column: span 6;">
+          <article class="card city" aria-label="City quickstart card" style="grid-column: span 6;">
             <div class="head">
               <h3>City quickstarts (optional)</h3>
               <span class="tag">Madrid • BCN</span>
@@ -604,7 +651,8 @@
         </div>
       </section>
 
-      <section class="section" id="how" aria-label="How it works">
+      <!-- NEW: another alternate background to break up the page -->
+      <section class="section section-alt" id="how" aria-label="How it works">
         <h2>How this works</h2>
         <p>
           This site is curated (not a comparison engine). I focus on services that help newcomers get set up fast,
@@ -612,7 +660,7 @@
         </p>
 
         <div class="grid">
-          <article class="card" style="grid-column: span 4;">
+          <article class="card info" style="grid-column: span 4;">
             <div class="head">
               <h3>Curated, not cluttered</h3>
               <span class="tag">Simple</span>
@@ -620,7 +668,7 @@
             <p>Only a few options per category — chosen for common expat situations (no Spanish address yet, short stays, visa needs).</p>
           </article>
 
-          <article class="card" style="grid-column: span 4;">
+          <article class="card info" style="grid-column: span 4;">
             <div class="head">
               <h3>Transparent links</h3>
               <span class="tag">Fair</span>
@@ -628,7 +676,7 @@
             <p>Some links may be affiliate links. It doesn’t cost you extra — it helps keep the site alive. I avoid recommending anything I wouldn’t use.</p>
           </article>
 
-          <article class="card" style="grid-column: span 4;">
+          <article class="card info" style="grid-column: span 4;">
             <div class="head">
               <h3>English-friendly help</h3>
               <span class="tag">Trusted</span>
