@@ -193,7 +193,6 @@
     }
     .section p{margin:0 0 14px; color:var(--muted);}
 
-    /* alternating section backgrounds */
     .section-alt{
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -265,7 +264,25 @@
       padding:6px 10px;
       border-radius:999px;
       background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(155,140,255,.9));
+      white-space:nowrap;
     }
+
+    /* ✅ NEW: better duration badge for call card */
+    .tag.time{
+      padding:6px 10px;
+      font-size:12px;
+      line-height:1;
+      white-space:nowrap;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .tag.time::before{
+      content:"⏱";
+      font-size:12px;
+      line-height:1;
+    }
+
     .card h3{margin:0; font-size:16px; letter-spacing:-.1px;}
     .card p{margin:0; color:var(--muted); font-size:14px;}
     .list{
@@ -288,6 +305,14 @@
     }
     .link small{color:var(--soft); display:block; margin-top:2px;}
     .arrow{opacity:.7}
+
+    /* ✅ note helper (you already used <small class="note">) */
+    .link .note{
+      display:block;
+      margin-top:6px;
+      font-size:12px;
+      color: rgba(183,194,226,0.6);
+    }
 
     /* Email box */
     .signup{
@@ -324,6 +349,10 @@
       padding:0 18px 16px;
     }
 
+    /* ✅ NEW: tighten the call card so buttons + note aren't stuck at the bottom */
+    .card.call .cta-row{ margin-top:10px; }
+    .card.call .fineprint{ margin-top:10px; }
+
     /* Footer */
     footer{
       padding:22px 0 34px;
@@ -332,11 +361,6 @@
     }
     footer a{color:var(--muted)}
     .divider{height:1px; background:var(--line); margin:16px 0;}
-
-    /* ✅ NEW: keep the 3 cards aligned & same height */
-    .row-3{ align-items: stretch; }
-    .row-3 .card{ height:100%; }
-    .actions{ margin-top:auto; }
   </style>
 </head>
 
@@ -437,6 +461,7 @@
             <span>Simple steps + what to avoid in your first week.</span>
           </div>
 
+          <!-- Replace action URL with your form provider (Mailchimp/Beehiiv/ConvertKit/etc.) -->
           <form action="#" method="post" onsubmit="return fakeSubmit(event)">
             <input type="email" name="email" placeholder="you@example.com" required />
             <button class="btn primary" type="submit">Send me the checklist</button>
@@ -533,6 +558,7 @@
                   <span class="arrow">↗</span>
                 </a>
               </li>
+
               <li>
                 <a class="link" href="https://www.digimobil.es/" target="_blank" rel="noopener">
                   <div>
@@ -543,13 +569,13 @@
                   <span class="arrow">→</span>
                 </a>
               </li>
+
               <li>
                 <a class="link" href="https://o2online.es/" target="_blank" rel="noopener">
                   <div>
                     <b>O2 — Home internet (when you have housing)</b>
-                    <small class="note">
-                      Better value if you bundle mobile + fiber: <span>DIGI</span>.
-                    </small>
+                    <small>Good option for fibre + mobile once your address is fixed.</small>
+                    <small class="note">Tip: bundles can be cheaper — compare with DIGI.</small>
                   </div>
                   <span class="arrow">→</span>
                 </a>
@@ -596,9 +622,7 @@
                   <div>
                     <b>Sanitas — Private health (Spain)</b>
                     <small>Popular for families and Spanish visa paperwork.</small>
-                    <small class="note">
-                      The website and contracts are in Spanish. Widely used by expats.
-                    </small>
+                    <small class="note">The website and contracts are in Spanish. Widely used by expats.</small>
                   </div>
                   <span class="arrow">↗</span>
                 </a>
@@ -610,114 +634,105 @@
             </p>
           </article>
 
-          <!-- ✅ ROW OF 3 (same height) -->
-          <div class="grid row-3" style="grid-column: span 12;">
-            <!-- Paperwork -->
-            <article class="card paperwork" aria-label="Paperwork help">
-              <div class="head">
-                <h3>Paperwork help</h3>
-                <span class="tag">Time-saver</span>
-              </div>
+          <!-- Paperwork -->
+          <article class="card paperwork" aria-label="Paperwork help">
+            <div class="head">
+              <h3>Paperwork help</h3>
+              <span class="tag">Time-saver</span>
+            </div>
 
-              <p>DIY guidance when it’s simple. Professional help when it matters — in English.</p>
+            <p>DIY guidance when it’s simple. Professional help when it matters — in English.</p>
 
-              <ul class="list">
-                <li>
-                  <a class="link" href="/paperwork/nie-tie.html">
-                    <div>
-                      <b>NIE / TIE guidance</b>
-                      <small>Step-by-step help + appointment strategy.</small>
-                      <small class="note">Guide in English. You’ll do the booking — or I’ll connect you with a trusted service if needed.</small>
-                    </div>
-                    <span class="arrow">→</span>
-                  </a>
-                </li>
+            <ul class="list">
+              <li>
+                <a class="link" href="/paperwork/nie-tie.html">
+                  <div>
+                    <b>NIE / TIE guidance</b>
+                    <small>Step-by-step help + appointment strategy.</small>
+                    <small class="note">Guide in English. You’ll do the booking — or I’ll connect you with a trusted service if needed.</small>
+                  </div>
+                  <span class="arrow">→</span>
+                </a>
+              </li>
 
-                <li>
-                  <a class="link" href="/paperwork/tax-advisor.html">
-                    <div>
-                      <b>Tax advisor (expat-friendly)</b>
-                      <small>For Beckham Law, double taxation and filings.</small>
-                      <small class="note">I can point you to vetted English-speaking professionals for your situation.</small>
-                    </div>
-                    <span class="arrow">→</span>
-                  </a>
-                </li>
+              <li>
+                <a class="link" href="/paperwork/tax-advisor.html">
+                  <div>
+                    <b>Tax advisor (expat-friendly)</b>
+                    <small>For Beckham Law, double taxation and filings.</small>
+                    <small class="note">I can point you to vetted English-speaking professionals for your situation.</small>
+                  </div>
+                  <span class="arrow">→</span>
+                </a>
+              </li>
 
-                <li>
-                  <a class="link" href="/paperwork/autonomo.html">
-                    <div>
-                      <b>Autónomo / freelance setup</b>
-                      <small>If you’ll invoice from Spain.</small>
-                      <small class="note">Best handled by a gestor — I’ll connect you and help you choose the right path.</small>
-                    </div>
-                    <span class="arrow">→</span>
-                  </a>
-                </li>
-              </ul>
+              <li>
+                <a class="link" href="/paperwork/autonomo.html">
+                  <div>
+                    <b>Autónomo / freelance setup</b>
+                    <small>If you’ll invoice from Spain.</small>
+                    <small class="note">Best handled by a gestor — I’ll connect you and help you choose the right path.</small>
+                  </div>
+                  <span class="arrow">→</span>
+                </a>
+              </li>
+            </ul>
 
-              <p class="fineprint" style="margin-top:10px;">
-                I’m not a lawyer or tax advisor. This site helps you choose the right path and find trusted help.
-              </p>
-            </article>
+            <p class="fineprint" style="margin-top:10px;">
+              I’m not a lawyer or tax advisor. This site helps you choose the right path and find trusted help.
+            </p>
+          </article>
 
-            <!-- Starter call (now span 4) -->
-            <article class="card call" aria-label="Starter call card">
-              <div class="head">
-                <h3>Need help choosing? (Optional)</h3>
-                <span class="tag">30 min</span>
-              </div>
-              <p>
-                A short call to clarify what you need, in what order — and avoid the common mistakes newcomers make.
-              </p>
+          <!-- Paid call -->
+          <article class="card call" aria-label="Starter call card" style="grid-column: span 6;">
+            <div class="head">
+              <h3>Need help choosing? (Optional)</h3>
+              <span class="tag time">30 min</span>
+            </div>
 
-              <div class="actions">
-                <div class="cta-row" style="margin-top:6px;">
-                  <a class="btn primary" href="/call/">Book a Starter Call</a>
-                  <a class="btn" href="#email">Get the free checklist</a>
-                </div>
-                <p class="fineprint" style="margin-top:8px;">
-                  Note: booking is handled by email for now (manual).
-                </p>
-              </div>
-            </article>
+            <p>
+              A short call to clarify what you need, in what order — and avoid the common mistakes newcomers make.
+            </p>
 
-            <!-- City guide (now span 4) -->
-            <article class="card city" aria-label="City quickstart card">
-              <div class="head">
-                <h3>City quickstarts (optional)</h3>
-                <span class="tag">Madrid • BCN</span>
-              </div>
-              <p>Mini-pages per city: best SIM stores, common paperwork offices, coworkings, and reliable neighbourhoods to start.</p>
+            <div class="cta-row" style="margin-top:10px;">
+              <!-- Replace href with your booking/payment link -->
+              <a class="btn primary" href="mailto:hello@spainstarterkit.com?subject=Starter%20Call%20(30%20min)%20-%20Request&body=Hi%2C%0A%0AI%E2%80%99d%20like%20to%20book%20a%2030-min%20Starter%20Call.%0A%0AName%3A%0ACity%3A%0AYour%20timezone%3A%0ABest%202-3%20time%20slots%20this%20week%3A%0AWhat%20do%20you%20need%20help%20with%3A%0A%0AThanks%21" rel="noopener">Book a Starter Call</a>
+              <a class="btn" href="#email">Get the free checklist</a>
+            </div>
 
-              <ul class="list">
-                <li>
-                  <a class="link" href="#" target="_blank" rel="noopener">
-                    <div>
-                      <b>Madrid quickstart</b>
-                      <small>Where to start if you land in Madrid.</small>
-                    </div>
-                    <span class="arrow">↗</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="link" href="#" target="_blank" rel="noopener">
-                    <div>
-                      <b>Barcelona quickstart</b>
-                      <small>Essentials + trusted services in BCN.</small>
-                    </div>
-                    <span class="arrow">↗</span>
-                  </a>
-                </li>
-              </ul>
+            <p class="fineprint" style="margin-top:10px;">
+              Note: booking is handled by email for now (manual).
+            </p>
+          </article>
 
-              <div class="actions">
-                <p class="fineprint" style="margin-top:10px;">More cities coming soon.</p>
-              </div>
-            </article>
-          </div>
-          <!-- ✅ end row of 3 -->
-
+          <!-- City guide -->
+          <article class="card city" aria-label="City quickstart card" style="grid-column: span 6;">
+            <div class="head">
+              <h3>City quickstarts (optional)</h3>
+              <span class="tag">Madrid • BCN</span>
+            </div>
+            <p>Mini-pages per city: best SIM stores, common paperwork offices, coworkings, and reliable neighbourhoods to start.</p>
+            <ul class="list">
+              <li>
+                <a class="link" href="#" target="_blank" rel="noopener">
+                  <div>
+                    <b>Madrid quickstart</b>
+                    <small>Where to start if you land in Madrid.</small>
+                  </div>
+                  <span class="arrow">↗</span>
+                </a>
+              </li>
+              <li>
+                <a class="link" href="#" target="_blank" rel="noopener">
+                  <div>
+                    <b>Barcelona quickstart</b>
+                    <small>Essentials + trusted services in BCN.</small>
+                  </div>
+                  <span class="arrow">↗</span>
+                </a>
+              </li>
+            </ul>
+          </article>
         </div>
       </section>
 
@@ -780,11 +795,12 @@
   </div>
 
   <script>
+    // Demo-only form handler. Replace with your email tool (Mailchimp/Beehiiv/ConvertKit/etc.)
     function fakeSubmit(e){
       e.preventDefault();
       const email = e.target.querySelector('input[type="email"]').value.trim();
       if(!email) return false;
-      alert("✅ Thanks! (Demo)\n\nConnect this form to your email tool.\nCaptured: " + email);
+      alert("✅ Thanks! (Demo)\\n\\nConnect this form to your email tool.\\nCaptured: " + email);
       e.target.reset();
       return false;
     }
