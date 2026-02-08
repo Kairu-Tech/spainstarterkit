@@ -193,7 +193,7 @@
     }
     .section p{margin:0 0 14px; color:var(--muted);}
 
-    /* NEW: alternating section backgrounds */
+    /* alternating section backgrounds */
     .section-alt{
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -210,7 +210,7 @@
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap:14px;
-      align-items:stretch; /* NEW */
+      align-items:stretch;
     }
     .card{
       grid-column: span 4;
@@ -223,12 +223,11 @@
       flex-direction:column;
       gap:10px;
       min-height: 210px;
-      border-left: 3px solid rgba(255,255,255,0.08); /* NEW */
+      border-left: 3px solid rgba(255,255,255,0.08);
     }
     @media (max-width: 980px){ .card{grid-column: span 6;} }
     @media (max-width: 640px){ .card{grid-column: span 12;} }
 
-    /* NEW: subtle color-tinted cards by category */
     .card.banking{
       background: linear-gradient(135deg, rgba(110,231,255,0.10), rgba(15,26,51,0.85));
       border-left-color: rgba(110,231,255,0.6);
@@ -333,6 +332,11 @@
     }
     footer a{color:var(--muted)}
     .divider{height:1px; background:var(--line); margin:16px 0;}
+
+    /* ✅ NEW: keep the 3 cards aligned & same height */
+    .row-3{ align-items: stretch; }
+    .row-3 .card{ height:100%; }
+    .actions{ margin-top:auto; }
   </style>
 </head>
 
@@ -433,7 +437,6 @@
             <span>Simple steps + what to avoid in your first week.</span>
           </div>
 
-          <!-- Replace action URL with your form provider (Mailchimp/Beehiiv/ConvertKit/etc.) -->
           <form action="#" method="post" onsubmit="return fakeSubmit(event)">
             <input type="email" name="email" placeholder="you@example.com" required />
             <button class="btn primary" type="submit">Send me the checklist</button>
@@ -442,7 +445,6 @@
         <div class="mini">No spam. Unsubscribe anytime. (This form is a demo — connect it to your email tool.)</div>
       </section>
 
-      <!-- NEW: section-alt gives subtle contrasting background -->
       <section class="section section-alt" id="recommended" aria-label="Recommended services">
         <h2>Recommended essentials</h2>
         <p>
@@ -450,74 +452,69 @@
         </p>
 
         <div class="grid">
-          <!-- BANKING CARD (drop this inside your "Recommended essentials" grid) -->
-<article class="card banking" aria-label="Banking card">
-  <div class="head">
-    <h3>Banking</h3>
-    <span class="tag">High intent</span>
-  </div>
+          <!-- BANKING -->
+          <article class="card banking" aria-label="Banking card">
+            <div class="head">
+              <h3>Banking</h3>
+              <span class="tag">High intent</span>
+            </div>
 
-  <p>Pick the right option depending on where you are in your move (arriving → daily use → local account).</p>
+            <p>Pick the right option depending on where you are in your move (arriving → daily use → local account).</p>
 
-  <ul class="list">
-    <!-- Option A -->
-  <li>
-  <a class="link" href="https://wise.com/invite/ihpc/alejandrob252" target="_blank" rel="noopener">
-    <div>
-      <b>Option A — Wise (Best for arriving)</b>
-      <small>
-        Works well without a Spanish address. Ideal for day one: get paid, move money and use a card before and after you arrive.
-      </small>
-      <small class="note">
-        Note: Wise may offer referral perks (e.g., a free card or fee-free transfers). Offers can change.
-      </small>
-    </div>
-    <span class="arrow">→</span>
-  </a>
-</li>
+            <ul class="list">
+              <li>
+                <a class="link" href="https://wise.com/invite/ihpc/alejandrob252" target="_blank" rel="noopener">
+                  <div>
+                    <b>Option A — Wise (Best for arriving)</b>
+                    <small>
+                      Works well without a Spanish address. Ideal for day one: get paid, move money and use a card before and after you arrive.
+                    </small>
+                    <small class="note">
+                      Note: Wise may offer referral perks (e.g., a free card or fee-free transfers). Offers can change.
+                    </small>
+                  </div>
+                  <span class="arrow">→</span>
+                </a>
+              </li>
 
-    <!-- Option B -->
-    <li>
-      <a class="link" href="https://revolut.com/referral/?referral-code=alejanjk2!FEB1-26-VR-GB-MDL-CTRL&geo-redirect" target="_blank" rel="noopener">
-        <div>
-          <b>Option B — Revolut (Great for everyday spending)</b>
-          <small>Easy app, reliable cards and good exchange rates. Popular for daily use once you’re settled.</small>
-        </div>
-        <span class="arrow">↗</span>
-      </a>
-    </li>
+              <li>
+                <a class="link" href="https://revolut.com/referral/?referral-code=alejanjk2!FEB1-26-VR-GB-MDL-CTRL&geo-redirect" target="_blank" rel="noopener">
+                  <div>
+                    <b>Option B — Revolut (Great for everyday spending)</b>
+                    <small>Easy app, reliable cards and good exchange rates. Popular for daily use once you’re settled.</small>
+                  </div>
+                  <span class="arrow">↗</span>
+                </a>
+              </li>
 
-    <!-- Optional: Alternative -->
-    <li>
-      <a class="link" href="https://n26.com/" target="_blank" rel="noopener">
-        <div>
-          <b>Alternative — N26 (Simple euro banking)</b>
-          <small>App-first euro account that many newcomers use for everyday banking.</small>
-        </div>
-        <span class="arrow">↗</span>
-      </a>
-    </li>
+              <li>
+                <a class="link" href="https://n26.com/" target="_blank" rel="noopener">
+                  <div>
+                    <b>Alternative — N26 (Simple euro banking)</b>
+                    <small>App-first euro account that many newcomers use for everyday banking.</small>
+                  </div>
+                  <span class="arrow">↗</span>
+                </a>
+              </li>
 
-    <!-- Option C -->
-   <li>
-  <a class="link" href="https://www.ing.es" target="_blank" rel="noopener">
-    <div>
-      <b>Option C — ING Spain (Local account, when ready)</b>
-      <small>
-        Useful for Spanish direct debits, rent and official admin tasks once you live in Spain and have your paperwork sorted.
-      </small>
-    </div>
-    <span class="arrow">→</span>
-  </a>
-</li>
-  </ul>
+              <li>
+                <a class="link" href="https://www.ing.es" target="_blank" rel="noopener">
+                  <div>
+                    <b>Option C — ING Spain (Local account, when ready)</b>
+                    <small>
+                      Useful for Spanish direct debits, rent and official admin tasks once you live in Spain and have your paperwork sorted.
+                    </small>
+                  </div>
+                  <span class="arrow">→</span>
+                </a>
+              </li>
+            </ul>
 
-  <p class="fineprint" style="margin-top:10px;">
-    Tip: If you’re arriving soon, start with Option A. Add a local Spanish account later if you need it for direct debits.
-  </p>
-</article>
+            <p class="fineprint" style="margin-top:10px;">
+              Tip: If you’re arriving soon, start with Option A. Add a local Spanish account later if you need it for direct debits.
+            </p>
+          </article>
 
-          
           <!-- SIM/eSIM -->
           <article class="card mobile" aria-label="SIM and eSIM card">
             <div class="head">
@@ -527,42 +524,42 @@
             <p>Get connected before you land, or the same day you arrive. Great for short or long stays.</p>
             <ul class="list">
               <li>
-  <a class="link" href="https://esim.holafly.com/" target="_blank" rel="noopener">
-    <div>
-      <b>Holafly — eSIM (Activate in minutes)</b>
-      <small>Ideal for day one. No shop visit needed.</small>
-      <small class="note">Holafly eSIMs offer unlimited data plans for travellers.</small>
-    </div>
-    <span class="arrow">↗</span>
-  </a>
-</li>
-             <li>
-      <a class="link" href="https://www.digimobil.es/" target="_blank" rel="noopener">
-        <div>
-          <b>DIGI — SIM (Best value monthly)</b>
-          <small>For longer stays (1–12 months). Good value mobile plans once you’re in Spain.</small>
-          <small class="note">Requires a physical SIM (shop visit or delivery address).</small>
-        </div>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-             <li>
-      <a class="link" href="https://o2online.es/" target="_blank" rel="noopener">
-        <div>
-        <b>O2 — Home internet (when you have housing)</b>
-          <small class="note">
-        Better value if you bundle mobile + fiber: <span>DIGI</span>.
-      </small>
-        </div>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-  </ul>
+                <a class="link" href="https://esim.holafly.com/" target="_blank" rel="noopener">
+                  <div>
+                    <b>Holafly — eSIM (Activate in minutes)</b>
+                    <small>Ideal for day one. No shop visit needed.</small>
+                    <small class="note">Holafly eSIMs offer unlimited data plans for travellers.</small>
+                  </div>
+                  <span class="arrow">↗</span>
+                </a>
+              </li>
+              <li>
+                <a class="link" href="https://www.digimobil.es/" target="_blank" rel="noopener">
+                  <div>
+                    <b>DIGI — SIM (Best value monthly)</b>
+                    <small>For longer stays (1–12 months). Good value mobile plans once you’re in Spain.</small>
+                    <small class="note">Requires a physical SIM (shop visit or delivery address).</small>
+                  </div>
+                  <span class="arrow">→</span>
+                </a>
+              </li>
+              <li>
+                <a class="link" href="https://o2online.es/" target="_blank" rel="noopener">
+                  <div>
+                    <b>O2 — Home internet (when you have housing)</b>
+                    <small class="note">
+                      Better value if you bundle mobile + fiber: <span>DIGI</span>.
+                    </small>
+                  </div>
+                  <span class="arrow">→</span>
+                </a>
+              </li>
+            </ul>
 
-  <p class="fineprint" style="margin-top:10px;">
-    Tip: start with an eSIM for day one. Switch to a monthly SIM once you’re settled.
-  </p>
-</article>
+            <p class="fineprint" style="margin-top:10px;">
+              Tip: start with an eSIM for day one. Switch to a monthly SIM once you’re settled.
+            </p>
+          </article>
 
           <!-- Insurance -->
           <article class="card insurance" aria-label="Insurance card">
@@ -572,152 +569,158 @@
             </div>
             <p>Pick the type that matches your situation (travel, expat health, or visa requirements).</p>
             <ul class="list">
-              <ul class="list">
-    <!-- Travel insurance -->
-    <li>
-      <a class="link" href="https://safetywing.com/" target="_blank" rel="noopener">
-        <div>
-          <b>SafetyWing — Travel insurance (short stays)</b>
-          <small>Good for trips, emergencies, and peace of mind.</small>
-          <small class="note">Website and support available in English.</small>
-        </div>
-        <span class="arrow">↗</span>
-      </a>
-    </li>
-
-    <!-- Expat health insurance -->
-    <li>
-      <a class="link" href="https://www.cignaglobal.com/" target="_blank" rel="noopener">
-        <div>
-          <b>Cigna — Expat health insurance (longer stays)</b>
-          <small>Better if you’re settling in or applying for visas.</small>
-          <small class="note">International policies with English documentation.</small>
-        </div>
-        <span class="arrow">↗</span>
-      </a>
-    </li>
-
-    <!-- Private health Spain -->
-    <li>
-      <a class="link" href="https://www.sanitas.es/" target="_blank" rel="noopener">
-        <div>
-          <b>Sanitas — Private health (Spain)</b>
-          <small>Popular for families and Spanish visa paperwork.</small>
-          <small class="note">
-            The website and contracts are in Spanish. Widely used by expats.
-          </small>
-        </div>
-        <span class="arrow">↗</span>
-      </a>
-    </li>
-  </ul>
-
-  <p class="fineprint" style="margin-top:10px;">
-    Tip: travel insurance is usually enough for short stays. Long-term visas often require specific health coverage.
-  </p>
-</article>       
-
-          <!-- Paperwork -->
-          <article class="card paperwork" aria-label="Paperwork help">
-  <div class="head">
-    <h3>Paperwork help</h3>
-    <span class="tag">Time-saver</span>
-  </div>
-
-  <p>
-    DIY guidance when it’s simple. Professional help when it matters — in English.
-  </p>
-
-  <ul class="list">
-    <li>
-      <a class="link" href="/paperwork/nie-tie.html">
-        <div>
-          <b>NIE / TIE guidance</b>
-          <small>Step-by-step help + appointment strategy.</small>
-          <small class="note">Guide in English. You’ll do the booking — or I’ll connect you with a trusted service if needed.</small>
-        </div>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-
-    <li>
-      <a class="link" href="/paperwork/tax-advisor.html">
-        <div>
-          <b>Tax advisor (expat-friendly)</b>
-          <small>For Beckham Law, double taxation and filings.</small>
-          <small class="note">I can point you to vetted English-speaking professionals for your situation.</small>
-        </div>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-
-    <li>
-      <a class="link" href="/paperwork/autonomo.html">
-        <div>
-          <b>Autónomo / freelance setup</b>
-          <small>If you’ll invoice from Spain.</small>
-          <small class="note">Best handled by a gestor — I’ll connect you and help you choose the right path.</small>
-        </div>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-  </ul>
-
-  <p class="fineprint" style="margin-top:10px;">
-    I’m not a lawyer or tax advisor. This site helps you choose the right path and find trusted help.
-  </p>
-</article>
-
-          <!-- Optional: Paid call -->
-          <article class="card call" aria-label="Starter call card" style="grid-column: span 6;">
-            <div class="head">
-              <h3>Need help choosing? (Optional)</h3>
-              <span class="tag">30 min</span>
-            </div>
-            <p>
-              A short call to clarify what you need, in what order — and avoid the common mistakes newcomers make.
-            </p>
-            <div class="cta-row" style="margin-top:6px;">
-              <a class="btn primary" href="#" target="_blank" rel="noopener">Book a Starter Call</a>
-              <a class="btn" href="#email">Get the free checklist</a>
-            </div>
-            <p class="fineprint" style="margin-top:8px;">
-              Tip: you can host bookings via Calendly/TidyCal and collect payment via Stripe.
-            </p>
-          </article>
-
-          <!-- Optional: City guide -->
-          <article class="card city" aria-label="City quickstart card" style="grid-column: span 6;">
-            <div class="head">
-              <h3>City quickstarts (optional)</h3>
-              <span class="tag">Madrid • BCN</span>
-            </div>
-            <p>Mini-pages per city: best SIM stores, common paperwork offices, coworkings, and reliable neighbourhoods to start.</p>
-            <ul class="list">
               <li>
-                <a class="link" href="#" target="_blank" rel="noopener">
+                <a class="link" href="https://safetywing.com/" target="_blank" rel="noopener">
                   <div>
-                    <b>Madrid quickstart</b>
-                    <small>Where to start if you land in Madrid.</small>
+                    <b>SafetyWing — Travel insurance (short stays)</b>
+                    <small>Good for trips, emergencies, and peace of mind.</small>
+                    <small class="note">Website and support available in English.</small>
                   </div>
                   <span class="arrow">↗</span>
                 </a>
               </li>
+
               <li>
-                <a class="link" href="#" target="_blank" rel="noopener">
+                <a class="link" href="https://www.cignaglobal.com/" target="_blank" rel="noopener">
                   <div>
-                    <b>Barcelona quickstart</b>
-                    <small>Essentials + trusted services in BCN.</small>
+                    <b>Cigna — Expat health insurance (longer stays)</b>
+                    <small>Better if you’re settling in or applying for visas.</small>
+                    <small class="note">International policies with English documentation.</small>
+                  </div>
+                  <span class="arrow">↗</span>
+                </a>
+              </li>
+
+              <li>
+                <a class="link" href="https://www.sanitas.es/" target="_blank" rel="noopener">
+                  <div>
+                    <b>Sanitas — Private health (Spain)</b>
+                    <small>Popular for families and Spanish visa paperwork.</small>
+                    <small class="note">
+                      The website and contracts are in Spanish. Widely used by expats.
+                    </small>
                   </div>
                   <span class="arrow">↗</span>
                 </a>
               </li>
             </ul>
+
+            <p class="fineprint" style="margin-top:10px;">
+              Tip: travel insurance is usually enough for short stays. Long-term visas often require specific health coverage.
+            </p>
           </article>
+
+          <!-- ✅ ROW OF 3 (same height) -->
+          <div class="grid row-3" style="grid-column: span 12;">
+            <!-- Paperwork -->
+            <article class="card paperwork" aria-label="Paperwork help">
+              <div class="head">
+                <h3>Paperwork help</h3>
+                <span class="tag">Time-saver</span>
+              </div>
+
+              <p>DIY guidance when it’s simple. Professional help when it matters — in English.</p>
+
+              <ul class="list">
+                <li>
+                  <a class="link" href="/paperwork/nie-tie.html">
+                    <div>
+                      <b>NIE / TIE guidance</b>
+                      <small>Step-by-step help + appointment strategy.</small>
+                      <small class="note">Guide in English. You’ll do the booking — or I’ll connect you with a trusted service if needed.</small>
+                    </div>
+                    <span class="arrow">→</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="link" href="/paperwork/tax-advisor.html">
+                    <div>
+                      <b>Tax advisor (expat-friendly)</b>
+                      <small>For Beckham Law, double taxation and filings.</small>
+                      <small class="note">I can point you to vetted English-speaking professionals for your situation.</small>
+                    </div>
+                    <span class="arrow">→</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="link" href="/paperwork/autonomo.html">
+                    <div>
+                      <b>Autónomo / freelance setup</b>
+                      <small>If you’ll invoice from Spain.</small>
+                      <small class="note">Best handled by a gestor — I’ll connect you and help you choose the right path.</small>
+                    </div>
+                    <span class="arrow">→</span>
+                  </a>
+                </li>
+              </ul>
+
+              <p class="fineprint" style="margin-top:10px;">
+                I’m not a lawyer or tax advisor. This site helps you choose the right path and find trusted help.
+              </p>
+            </article>
+
+            <!-- Starter call (now span 4) -->
+            <article class="card call" aria-label="Starter call card">
+              <div class="head">
+                <h3>Need help choosing? (Optional)</h3>
+                <span class="tag">30 min</span>
+              </div>
+              <p>
+                A short call to clarify what you need, in what order — and avoid the common mistakes newcomers make.
+              </p>
+
+              <div class="actions">
+                <div class="cta-row" style="margin-top:6px;">
+                  <a class="btn primary" href="/call/">Book a Starter Call</a>
+                  <a class="btn" href="#email">Get the free checklist</a>
+                </div>
+                <p class="fineprint" style="margin-top:8px;">
+                  Note: booking is handled by email for now (manual).
+                </p>
+              </div>
+            </article>
+
+            <!-- City guide (now span 4) -->
+            <article class="card city" aria-label="City quickstart card">
+              <div class="head">
+                <h3>City quickstarts (optional)</h3>
+                <span class="tag">Madrid • BCN</span>
+              </div>
+              <p>Mini-pages per city: best SIM stores, common paperwork offices, coworkings, and reliable neighbourhoods to start.</p>
+
+              <ul class="list">
+                <li>
+                  <a class="link" href="#" target="_blank" rel="noopener">
+                    <div>
+                      <b>Madrid quickstart</b>
+                      <small>Where to start if you land in Madrid.</small>
+                    </div>
+                    <span class="arrow">↗</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="link" href="#" target="_blank" rel="noopener">
+                    <div>
+                      <b>Barcelona quickstart</b>
+                      <small>Essentials + trusted services in BCN.</small>
+                    </div>
+                    <span class="arrow">↗</span>
+                  </a>
+                </li>
+              </ul>
+
+              <div class="actions">
+                <p class="fineprint" style="margin-top:10px;">More cities coming soon.</p>
+              </div>
+            </article>
+          </div>
+          <!-- ✅ end row of 3 -->
+
         </div>
       </section>
 
-      <!-- NEW: another alternate background to break up the page -->
       <section class="section section-alt" id="how" aria-label="How it works">
         <h2>How this works</h2>
         <p>
@@ -777,7 +780,6 @@
   </div>
 
   <script>
-    // Demo-only form handler. Replace with your email tool (Mailchimp/Beehiiv/ConvertKit/etc.)
     function fakeSubmit(e){
       e.preventDefault();
       const email = e.target.querySelector('input[type="email"]').value.trim();
