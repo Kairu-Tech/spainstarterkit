@@ -462,10 +462,26 @@
           </div>
 
           <!-- Replace action URL with your form provider (Mailchimp/Beehiiv/ConvertKit/etc.) -->
-<form action="mailto:alex@kairu.tech" method="post" enctype="text/plain">
-            <input type="email" name="email" placeholder="you@example.com" required />
-            <button class="btn primary" type="submit">Send me the checklist</button>
-          </form>
+<form
+  action="mailto:alex@kairu.tech
+  ?subject=Spain Starter Kit – Checklist request
+  &body=Hello Alex,%0D%0A%0D%0A
+  Someone has requested the Spain Starter Kit checklist.%0D%0A%0D%0A
+  Details:%0D%0A
+  Name:%20
+  "
+  method="post"
+  enctype="text/plain"
+>
+  <input type="text" name="Name" placeholder="Your name" required />
+  <input type="email" name="Email" placeholder="Your email" required />
+  <input type="text" name="Country" placeholder="Country of origin" required />
+  <input type="text" name="City" placeholder="City in Spain (or planned)" required />
+
+  <button class="btn primary" type="submit">
+    Send me the checklist
+  </button>
+</form>
         </div>
         <div class="mini">No spam. Unsubscribe anytime. (This form is a demo — connect it to your email tool.)</div>
       </section>
